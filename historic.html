@@ -59,18 +59,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .note-box{background:rgba(41,128,185,.08);border-right:3px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 14px;margin:10px 0;}
 .date-chip{background:rgba(232,160,32,.2);border-radius:6px;padding:2px 10px;font-size:.8rem;font-weight:700;color:var(--accent);margin-left:6px;}
 
-/* Quiz */
-.quiz-q{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;}
-.quiz-q .qnum{font-size:.78rem;color:var(--muted);margin-bottom:6px;}
-.quiz-q .qtext{font-size:.9rem;font-weight:700;line-height:1.8;margin-bottom:14px;}
-.options{display:flex;flex-direction:column;gap:8px;}
-.opt{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'Cairo',sans-serif;font-size:.85rem;color:var(--text);cursor:pointer;transition:all .2s;text-align:right;}
-.opt:hover:not(.answered){background:rgba(232,160,32,.08);border-color:var(--accent);}
-.opt.correct{background:rgba(39,174,96,.15);border-color:var(--green);color:#2ecc71;}
-.opt.wrong{background:rgba(192,57,43,.15);border-color:var(--red);color:#e74c3c;}
-.opt.show-correct{background:rgba(39,174,96,.1);border-color:rgba(39,174,96,.4);}
-.explain{margin-top:12px;padding:10px 14px;background:rgba(41,128,185,.1);border-radius:8px;font-size:.83rem;line-height:1.8;color:#a8c8e8;display:none;}
-.explain.show{display:block;}
+
 .score-bar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;margin-bottom:14px;}
 .score-bar h2{font-size:1.5rem;font-weight:900;color:var(--accent);}
 .score-bar p{color:var(--muted);margin-top:6px;}
@@ -113,7 +102,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="tab" onclick="showPage('sanremo')">🏛️ سان ريمو</div>
   <div class="tab" onclick="showPage('syria')">🇸🇾 سوريا ولبنان</div>
   <div class="tab" onclick="showPage('saudi')">🏴 آل سعود</div>
-  <div class="tab" onclick="showPage('quiz')">❓ امتحان</div>
   <div class="tab" onclick="showPage('flash')">🃏 فلاش كاردز</div>
 </div>
 
@@ -149,21 +137,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="emoji">🇸🇾</div>
       <h3>سوريا ولبنان</h3>
       <p>الثورة السورية الكبرى 1925 وسياسة الانتداب الفرنسي</p>
-    </div>
-    <div class="home-card" onclick="showPage('saudi')">
-      <div class="emoji">🏴</div>
-      <h3>آل سعود والحجاز</h3>
-      <p>توسع آل سعود في الجزيرة العربية وضم الحجاز</p>
-    </div>
-    <div class="home-card" onclick="showPage('quiz')">
-      <div class="emoji">❓</div>
-      <h3>امتحان تجريبي</h3>
-      <p>20 سؤال اختيار من متعدد مع الشرح والتصحيح الفوري</p>
-    </div>
-    <div class="home-card" onclick="showPage('flash')">
-      <div class="emoji">🃏</div>
-      <h3>فلاش كاردز</h3>
-      <p>25 بطاقة للمصطلحات والتواريخ المهمة للحفظ السريع</p>
     </div>
   </div>
 </div>
@@ -341,44 +314,6 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </div>
 
 <!-- SAUDI PAGE -->
-<div class="page" id="page-saudi">
-  <div class="content-box">
-    <h2>🏴 آل سعود وتوسعهم في الجزيرة العربية</h2>
-
-    <h3>خطوات توسع عبدالعزيز آل سعود:</h3>
-    <div class="note-box">
-      <ul>
-        <li><span class="date-chip">1919م</span> الضغط العسكري على الشريف حسين وإبادة قواته عند <strong>تربة</strong></li>
-        <li><span class="date-chip">1921م</span> ضم حائل بعد ضرب آل الرشيد ضربة نهائية</li>
-        <li><span class="date-chip">1924م</span> الاستيلاء على الطائف ثم مكة</li>
-        <li><span class="date-chip">يناير 1926م</span> إطلاق لقب <strong>ملك الحجاز وسلطان نجد</strong> على نفسه</li>
-        <li><span class="date-chip">1930م</span> الدخول في حروب مع اليمن حول عسير والانتصار عليهم</li>
-      </ul>
-    </div>
-
-    <h3>معاهدة الطائف <span class="date-chip">1934م</span></h3>
-    <div class="result-box2">
-      <p>عُقدت بين السعودية واليمن وبمقتضاها أصبحت <strong>عسير جزءاً من الدولة السعودية</strong></p>
-    </div>
-  </div>
-</div>
-
-<!-- QUIZ PAGE -->
-<div class="page" id="page-quiz">
-  <div class="score-bar" id="scoreBar" style="display:none">
-    <h2 id="scoreText">نتيجتك</h2>
-    <p id="scoreMsg"></p>
-    <button class="reset-btn" onclick="resetQuiz()">🔄 حاول تاني</button>
-  </div>
-  <div id="quizContainer"></div>
-</div>
-
-<!-- FLASH PAGE -->
-<div class="page" id="page-flash">
-  <div style="text-align:center;padding:10px 0 16px;">
-    <p style="color:var(--muted);font-size:.85rem;">اضغط على البطاقة لتقليبها</p>
-  </div>
-  <div id="flashContainer"></div>
   <div class="fc-nav">
     <button onclick="prevCard()">→ السابقة</button>
     <button onclick="nextCard()">← التالية</button>
@@ -393,95 +328,10 @@ function showPage(id) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   const tabs = document.querySelectorAll('.tab');
-  const map = {home:0,war:1,revolt:2,sykes:3,sanremo:4,syria:5,saudi:6,quiz:7,flash:8};
+  const map = {home:0,war:1,revolt:2,sykes:3,sanremo:4,syria:5,saudi:6,flash:7};
   tabs[map[id]].classList.add('active');
   window.scrollTo(0,0);
-  if (id === 'quiz') initQuiz();
   if (id === 'flash') initFlash();
-}
-
-// ===== Quiz Data =====
-const questions = [
-  {q:"في أي شهر وسنة أعلنت الدولة العثمانية الجهاد المقدس؟",opts:["أكتوبر 1914م","نوفمبر 1914م","يناير 1915م","مارس 1915م"],ans:1,exp:"في نوفمبر 1914م أعلنت الدولة العثمانية الجهاد المقدس ضد دول الوفاق بعد قصف الأسطول العثماني للموانئ الروسية."},
-  {q:"ما هو الهدف الرئيسي من دخول الدولة العثمانية الحرب العالمية الأولى؟",opts:["توسيع أراضيها نحو أفريقيا","استرداد ما أخذته منها دول الوفاق","نشر الإسلام في أوروبا","مساعدة ألمانيا فقط"],ans:1,exp:"دخلت الدولة العثمانية الحرب لاسترداد ما اقتنصته منها دول الوفاق وإنقاذ ما تبقى من ولاياتها العربية."},
-  {q:"من هو المندوب السامي البريطاني الذي تراسل مع الشريف حسين؟",opts:["لورد بلفور","هنري مكماهون","رونالد ستورز","جمال باشا"],ans:1,exp:"هنري مكماهون هو المندوب السامي البريطاني في القاهرة الذي أجرى المراسلات مع الشريف حسين عام 1915-1916م."},
-  {q:"ما الذي طلبه الشريف حسين في مراسلاته مع مكماهون؟",opts:["ضم مصر للدولة العربية","تولي الخلافة الإسلامية واستقلال البلاد العربية","الاعتراف بإمارة الحجاز فقط","إخراج الأتراك من فلسطين"],ans:1,exp:"طلب الشريف حسين تولي الخلافة الإسلامية بدل السلطان العثماني واستقلال كل البلاد العربية تحت الحكم العثماني."},
-  {q:"في أي سنة أعلن الشريف حسين الثورة العربية؟",opts:["1914م","1915م","1916م","1917م"],ans:2,exp:"أعلن الشريف حسين الثورة العربية في يونيو 1916م بعد أن تأكد أن الأتراك سينقضون عليه."},
-  {q:"من قاد جبل الدروز في الثورة السورية الكبرى 1925م؟",opts:["الأمير فيصل","سلطان باشا الأطرش","عبدالعزيز آل سعود","الشريف حسين"],ans:1,exp:"انطلقت الثورة السورية الكبرى من جبل الدروز بقيادة سلطان باشا الأطرش ضد الانتداب الفرنسي."},
-  {q:"ماذا قرر مؤتمر سان ريمو 1920م بشأن العراق وفلسطين؟",opts:["وضعهما تحت الانتداب الفرنسي","وضعهما تحت الانتداب البريطاني","منحهما الاستقلال","وضعهما تحت إدارة دولية"],ans:1,exp:"قرر مؤتمر سان ريمو وضع العراق كله وفلسطين تحت الانتداب البريطاني، وسوريا ولبنان تحت الانتداب الفرنسي."},
-  {q:"اتفاقية سايكس-بيكو كانت بين كم دولة؟",opts:["دولتين","ثلاث دول","أربع دول","خمس دول"],ans:1,exp:"كانت الاتفاقية ثلاثية بين روسيا القيصرية وإنجلترا وفرنسا لاقتسام أملاك الدولة العثمانية."},
-  {q:"ما الذي حصلت عليه فرنسا في اتفاقية سايكس-بيكو؟",opts:["العراق وفلسطين","الساحل السوري وشمال العراق","شبه الجزيرة العربية","مصر والسودان"],ans:1,exp:"حصلت فرنسا على جنوب الأناضول والإسكندرية والساحل السوري وشمال العراق بما فيه الموصل."},
-  {q:"متى عقدت هدنة مدروس التي أنهت الحرب العالمية الأولى في الشرق؟",opts:["أكتوبر 1918م","نوفمبر 1918م","ديسمبر 1918م","يناير 1919م"],ans:1,exp:"عُقدت هدنة مدروس في نوفمبر 1918م بين الدولة العثمانية ودول الوفاق لوقف القتال."},
-  {q:"ما سبب تمزيق فرنسا لسوريا إلى دويلات؟",opts:["لأسباب جغرافية طبيعية","سياسة استعمارية لتفريق العرب","بطلب من زعماء المنطقة","لتسهيل إدارة المنطقة فقط"],ans:1,exp:"كانت تمزيق سوريا إلى دويلات صغيرة (حلب، الدروز، العلويين، دمشق) سياسة استعمارية مقصودة لإضعاف الوحدة العربية."},
-  {q:"في أي سنة استولى آل سعود على الطائف؟",opts:["1921م","1922م","1923م","1924م"],ans:3,exp:"استولى عبدالعزيز آل سعود على الطائف عام 1924م كخطوة نحو ضم الحجاز."},
-  {q:"بموجب معاهدة الطائف 1934م أصبحت عسير تابعة لـ؟",opts:["اليمن","الدولة السعودية","بريطانيا","الدولة العثمانية"],ans:1,exp:"بمقتضى معاهدة الطائف 1934م أصبحت عسير جزءاً من الدولة السعودية بعد انتصار آل سعود على اليمن."},
-  {q:"ما سبب قلق إنجلترا من إعلان الجهاد المقدس العثماني؟",opts:["خوفها من الجيش العثماني","لأنها تحكم منطقة فيها 50 مليون مسلم","خوفها من روسيا","لأنها لم تكن مستعدة للحرب"],ans:1,exp:"كانت إنجلترا تحكم الهند وجنوب شرق آسيا التي بها حوالي 50 مليون مسلم، فكانت تخشى صدى دعوة الجهاد."},
-  {q:"ما نتيجة الثورة السورية الكبرى 1925م؟",opts:["استقلال سوريا فوراً","تعديل فرنسا لسياساتها وإعلان الجمهورية السورية لاحقاً","طرد الفرنسيين من سوريا","ضم سوريا لإنجلترا"],ans:1,exp:"أدت الثورة إلى تعديل السلطة الفرنسية لسياساتها واتفاق الطرفين على جمعية تأسيسية أعلنت الجمهورية السورية."},
-  {q:"أي من الآتي كان من أسباب ربط فرنسا العملة السورية بالفرنك؟",opts:["مساعدة الاقتصاد السوري","السيطرة على اقتصاد سوريا ولبنان","تشجيع التجارة الدولية","طلب من الحكومة السورية"],ans:1,exp:"ربطت فرنسا العملة السورية واللبنانية بالفرنك الفرنسي كجزء من سياستها الاستعمارية للسيطرة على اقتصاد المنطقة."},
-  {q:"من كشف نصوص اتفاقية سايكس-بيكو للعرب؟",opts:["الأمير فيصل","روسيا البلشفية","الشريف حسين","ألمانيا"],ans:1,exp:"كشفت روسيا البلشفية بعد ثورة أكتوبر 1917م نصوص الاتفاقية السرية لفضح مخططات الدول الاستعمارية."},
-  {q:"ما الهدنة التي أنهت وجود آل الرشيد؟",opts:["هدنة العقبة","ضم حائل 1921م","معاهدة الطائف","هدنة مدروس"],ans:1,exp:"ضم عبدالعزيز آل سعود حائل عام 1921م بعد أن ضرب آل الرشيد ضربة نهائية."},
-  {q:"ما الفرق الجوهري بين الموقفين السوري والفرنسي بعد الثورة السورية؟",opts:["الخلاف على الحدود","السوريون يريدون استقلالاً كاملاً والفرنسيون يريدون بقاء سيطرتهم","الخلاف على الانتداب","الخلاف على العلاقات الاقتصادية"],ans:1,exp:"أصر السوريون على دولة مستقلة دستورية برلمانية بينما أصر الفرنسيون على أن تظل اليد العليا لهم في توجيه البلاد."},
-  {q:"متى أطلق عبدالعزيز آل سعود على نفسه لقب ملك الحجاز؟",opts:["1924م","1925م","يناير 1926م","1927م"],ans:2,exp:"في يناير 1926م أطلق عبدالعزيز آل سعود على نفسه لقب ملك الحجاز وسلطان نجد بعد أن ضم الحجاز كاملاً."},
-];
-
-let answered = [];
-let quizInited = false;
-
-function initQuiz() {
-  if (quizInited) return;
-  quizInited = true;
-  answered = new Array(questions.length).fill(false);
-  const c = document.getElementById('quizContainer');
-  c.innerHTML = questions.map((q,i) => `
-    <div class="quiz-q" id="qq${i}">
-      <div class="qnum">السؤال ${i+1} من ${questions.length}</div>
-      <div class="qtext">${q.q}</div>
-      <div class="options">
-        ${q.opts.map((o,j) => `<button class="opt" onclick="answer(${i},${j})">${o}</button>`).join('')}
-      </div>
-      <div class="explain" id="exp${i}">💡 ${q.exp}</div>
-    </div>
-  `).join('');
-}
-
-function answer(qi, oi) {
-  if (answered[qi]) return;
-  answered[qi] = true;
-  const q = questions[qi];
-  const opts = document.querySelectorAll(`#qq${qi} .opt`);
-  opts.forEach((o,i) => {
-    o.classList.add('answered');
-    if (i === q.ans) o.classList.add('correct');
-    else if (i === oi && oi !== q.ans) o.classList.add('wrong');
-  });
-  document.getElementById('exp' + qi).classList.add('show');
-  if (answered.every(Boolean)) showScore();
-}
-
-function showScore() {
-  const correct = questions.filter((q,i) => {
-    const opts = document.querySelectorAll(`#qq${i} .opt`);
-    return [...opts][q.ans].classList.contains('correct') && ![...opts].some((o,j) => j !== q.ans && o.classList.contains('wrong'));
-  }).length;
-  // count correct answers
-  let score = 0;
-  questions.forEach((q,i) => {
-    const opts = document.querySelectorAll(`#qq${i} .opt`);
-    if ([...opts][q.ans].classList.contains('correct')) score++;
-  });
-  const bar = document.getElementById('scoreBar');
-  bar.style.display = 'block';
-  document.getElementById('scoreText').textContent = `${score} / ${questions.length} ✅`;
-  const pct = Math.round(score/questions.length*100);
-  document.getElementById('scoreMsg').textContent = pct>=80 ? '🎉 ممتاز! أنت مستعد للامتحان' : pct>=60 ? '👍 كويس، راجع النقاط اللي غلطت فيها' : '📖 راجع المحتوى تاني وحاول من الأول';
-  bar.scrollIntoView({behavior:'smooth'});
-}
-
-function resetQuiz() {
-  quizInited = false;
-  document.getElementById('scoreBar').style.display = 'none';
-  initQuiz();
-  window.scrollTo(0,0);
 }
 
 // ===== Flashcards =====
