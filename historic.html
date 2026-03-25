@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A7MD_EDITOR \u2014 \u0645\u0630\u0627\u0643\u0631\u0629 \u0627\u0644\u062a\u0627\u0631\u064a\u062e</title>
+<title>A7MD_EDITOR — مذاكرة التاريخ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -38,7 +38,7 @@ body {
   overflow-x: hidden;
 }
 
-/* \u2500\u2500\u2500 Background texture \u2500\u2500\u2500 */
+/* ─── Background texture ─── */
 body::before {
   content: '';
   position: fixed;
@@ -51,7 +51,7 @@ body::before {
   z-index: 0;
 }
 
-/* \u2500\u2500\u2500 Header \u2500\u2500\u2500 */
+/* ─── Header ─── */
 .header {
   position: sticky;
   top: 0;
@@ -102,7 +102,7 @@ body::before {
   text-transform: uppercase;
 }
 
-/* \u2500\u2500\u2500 Sidebar nav \u2500\u2500\u2500 */
+/* ─── Sidebar nav ─── */
 .layout {
   display: flex;
   min-height: calc(100vh - 62px);
@@ -183,7 +183,7 @@ body::before {
   margin: 4px 0;
 }
 
-/* \u2500\u2500\u2500 Main content \u2500\u2500\u2500 */
+/* ─── Main content ─── */
 .main {
   flex: 1;
   overflow-y: auto;
@@ -193,7 +193,7 @@ body::before {
   width: 100%;
 }
 
-/* \u2500\u2500\u2500 Pages \u2500\u2500\u2500 */
+/* ─── Pages ─── */
 .page { display: none; animation: fadeSlide .35s cubic-bezier(.4,0,.2,1); }
 .page.active { display: block; }
 
@@ -202,7 +202,7 @@ body::before {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* \u2500\u2500\u2500 Page title \u2500\u2500\u2500 */
+/* ─── Page title ─── */
 .page-title {
   display: flex;
   align-items: center;
@@ -242,7 +242,7 @@ body::before {
   margin-top: 3px;
 }
 
-/* \u2500\u2500\u2500 Cards / Boxes \u2500\u2500\u2500 */
+/* ─── Cards / Boxes ─── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -304,7 +304,7 @@ body::before {
 }
 
 .card li::before {
-  content: '\u25c6';
+  content: '◆';
   position: absolute;
   right: 0;
   top: 50%;
@@ -313,7 +313,7 @@ body::before {
   color: var(--gold);
 }
 
-/* \u2500\u2500\u2500 Colored highlight boxes \u2500\u2500\u2500 */
+/* ─── Colored highlight boxes ─── */
 .hbox {
   border-radius: 10px;
   padding: 14px 16px;
@@ -344,7 +344,7 @@ body::before {
 
 .hbox p, .hbox li { font-size: .87rem; line-height: 2; color: var(--text); }
 
-/* \u2500\u2500\u2500 Date chips / Tags \u2500\u2500\u2500 */
+/* ─── Date chips / Tags ─── */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -364,7 +364,7 @@ body::before {
 
 strong { color: var(--gold2); }
 
-/* \u2500\u2500\u2500 Home grid \u2500\u2500\u2500 */
+/* ─── Home grid ─── */
 .home-hero {
   background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
   border: 1px solid var(--border);
@@ -379,4 +379,897 @@ strong { color: var(--gold2); }
 .home-hero::before {
   content: '';
   position: absolute;
-  top: -
+  top: -40px; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(212,168,75,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.home-hero .hero-emoji { font-size: 52px; display: block; margin-bottom: 14px; }
+
+.home-hero h2 {
+  font-family: 'Amiri', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold2);
+  margin-bottom: 8px;
+}
+
+.home-hero p { font-size: .88rem; color: var(--text3); line-height: 1.8; }
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media(max-width: 520px) {
+  .home-grid { grid-template-columns: 1fr; }
+  .sidebar { width: 58px; }
+  .nav-btn { width: 44px; height: 44px; }
+}
+
+.home-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 16px;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,168,75,.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.home-card:hover {
+  border-color: rgba(212,168,75,.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.4), 0 0 0 1px rgba(212,168,75,.1);
+}
+
+.home-card:hover::after { opacity: 1; }
+
+.home-card .hc-icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.home-card h3 {
+  font-size: .92rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.home-card p {
+  font-size: .78rem;
+  color: var(--text3);
+  line-height: 1.7;
+}
+
+.home-card .hc-arrow {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  font-size: .8rem;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(6px);
+  transition: all .3s;
+}
+
+.home-card:hover .hc-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Chapter section header ─── */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 12px;
+}
+
+.section-header .sh-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.section-header span {
+  font-size: .8rem;
+  font-weight: 800;
+  color: var(--gold);
+  background: var(--surface2);
+  border: 1px solid rgba(212,168,75,.25);
+  border-radius: 20px;
+  padding: 4px 14px;
+  white-space: nowrap;
+}
+
+/* ─── Comparison table ─── */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.comp-table th {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  padding: 10px 14px;
+  font-size: .82rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-align: center;
+}
+
+.comp-table td {
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  font-size: .84rem;
+  color: var(--text);
+  line-height: 1.8;
+  vertical-align: top;
+}
+
+.comp-table tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+
+/* ─── Flashcards ─── */
+.fc-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.fc-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--surface2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
+.fc-counter {
+  font-size: .8rem;
+  color: var(--text3);
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.fc-wrap {
+  perspective: 1200px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.fc {
+  width: 100%;
+  min-height: 190px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+}
+
+.fc.flipped { transform: rotateY(180deg); }
+
+.fc-front, .fc-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  min-height: 190px;
+}
+
+.fc-front {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.fc-back {
+  background: linear-gradient(135deg, rgba(22,160,133,.1), rgba(212,168,75,.08));
+  border: 1px solid rgba(212,168,75,.3);
+  transform: rotateY(180deg);
+}
+
+.fc-front .fc-q-label {
+  font-size: .75rem;
+  color: var(--text3);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fc-front p {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.9;
+  color: var(--white);
+}
+
+.fc-back .fc-a-label {
+  font-size: .75rem;
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.fc-back p {
+  font-size: .92rem;
+  line-height: 2;
+  color: var(--text);
+}
+
+.fc-hint {
+  text-align: center;
+  font-size: .78rem;
+  color: var(--text3);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.fc-hint span {
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .5; }
+  50% { opacity: 1; }
+}
+
+.fc-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.fc-btn {
+  flex: 1;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--border2);
+  background: var(--surface2);
+  color: var(--text2);
+  font-family: 'Cairo', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.fc-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212,168,75,.07);
+}
+
+.fc-btn.primary {
+  background: rgba(212,168,75,.12);
+  border-color: rgba(212,168,75,.35);
+  color: var(--gold);
+}
+
+.fc-btn.primary:hover {
+  background: rgba(212,168,75,.2);
+}
+
+/* ─── Saudi section / extra ─── */
+#page-saudi .card { }
+
+/* ─── Watermark ─── */
+.watermark {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .72rem;
+  font-weight: 900;
+  color: rgba(212,168,75,.13);
+  letter-spacing: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<div class="header">
+  <div class="header-brand">
+    <div class="header-logo">📜</div>
+    <div class="header-text">
+      <h1>A7MD_EDITOR</h1>
+      <p>الفصل السادس — التاريخ</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LAYOUT ─── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <button class="nav-btn active" onclick="showPage('home')">
+      <span class="nb-icon">🏠</span>
+      <span class="nb-label">الرئيسية</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <button class="nav-btn" onclick="showPage('war')">
+      <span class="nb-icon">⚔️</span>
+      <span class="nb-label">الحرب</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('revolt')">
+      <span class="nb-icon">🔥</span>
+      <span class="nb-label">الثورة</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('sykes')">
+      <span class="nb-icon">🗺️</span>
+      <span class="nb-label">سايكس</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('sanremo')">
+      <span class="nb-icon">🏛️</span>
+      <span class="nb-label">سان ريمو</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('syria')">
+      <span class="nb-icon">🇸🇾</span>
+      <span class="nb-label">سوريا</span>
+    </button>
+    <button class="nav-btn" onclick="showPage('saudi')">
+      <span class="nb-icon">🏴</span>
+      <span class="nb-label">آل سعود</span>
+    </button>
+
+    <div class="sidebar-divider"></div>
+
+    <button class="nav-btn" onclick="showPage('flash')">
+      <span class="nb-icon">🃏</span>
+      <span class="nb-label">فلاش</span>
+    </button>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ════════════════ HOME ════════════════ -->
+    <div class="page active" id="page-home">
+      <div class="home-hero">
+        <span class="hero-emoji">📚</span>
+        <h2>التوسع الاستعماري في البلاد العربية</h2>
+        <p>الواقعة تحت الحكم العثماني — من الحرب العالمية الأولى حتى الاستقلال</p>
+      </div>
+
+      <div class="home-grid">
+        <div class="home-card" onclick="showPage('war')">
+          <div class="hc-icon">⚔️</div>
+          <h3>الحرب العالمية الأولى</h3>
+          <p>مصير الدولة العثمانية وموقف العرب من الجهاد المقدس</p>
+          <div class="hc-arrow">←</div>
+        </div>
+        <div class="home-card" onclick="showPage('revolt')">
+          <div class="hc-icon">🔥</div>
+          <h3>الثورة العربية 1916م</h3>
+          <p>مقدماتها وأسبابها ومراسلات الحسين-مكماهون ونتائجها</p>
+          <div class="hc-arrow">←</div>
+        </div>
+        <div class="home-card" onclick="showPage('sykes')">
+          <div class="hc-icon">🗺️</div>
+          <h3>اتفاقية سايكس-بيكو</h3>
+          <p>تقسيم الهلال الخصيب بين إنجلترا وفرنسا ونتائجها</p>
+          <div class="hc-arrow">←</div>
+        </div>
+        <div class="home-card" onclick="showPage('sanremo')">
+          <div class="hc-icon">🏛️</div>
+          <h3>مؤتمر سان ريمو 1920م</h3>
+          <p>تعديل سايكس-بيكو وتحديد مناطق الانتداب الدولي</p>
+          <div class="hc-arrow">←</div>
+        </div>
+        <div class="home-card" onclick="showPage('syria')">
+          <div class="hc-icon">🇸🇾</div>
+          <h3>سوريا ولبنان</h3>
+          <p>الثورة السورية الكبرى 1925م وسياسة الانتداب الفرنسي</p>
+          <div class="hc-arrow">←</div>
+        </div>
+        <div class="home-card" onclick="showPage('saudi')">
+          <div class="hc-icon">🏴</div>
+          <h3>توسع آل سعود</h3>
+          <p>دخول الحجاز وتوسع آل سعود في الجزيرة العربية</p>
+          <div class="hc-arrow">←</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ WAR ════════════════ -->
+    <div class="page" id="page-war">
+      <div class="page-title">
+        <div class="pt-icon red">⚔️</div>
+        <div class="pt-text">
+          <h2>قيام الحرب العالمية الأولى</h2>
+          <p>ومصير الدولة العثمانية</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>دخول الدولة العثمانية الحرب</h3>
+        <p>دخلت الدولة العثمانية الحرب العالمية الأولى وانضمت إلى جانب <strong>ألمانيا والنمسا</strong> بهدف:</p>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">⚠️ الأهداف</div>
+          <ul>
+            <li>استرداد ما اقتنصته منها دول الوفاق (إنجلترا وفرنسا)</li>
+            <li>إنقاذ نفسها مما تبقى تحت يدها من ولايات عربية</li>
+            <li>الحيلولة دون مخططات دول الوفاق لاقتسام الدولة العثمانية</li>
+          </ul>
+        </div>
+        <p>قام الأسطول العثماني بقصف ميناءين روسيين <span class="chip chip-blue">أوديسا</span> <span class="chip chip-blue">سفاستوبول</span></p>
+        <p>وفي <span class="chip chip-gold">نوفمبر 1914م</span> أعلنت الدولة العثمانية <strong>الجهاد المقدس</strong> ضد دول الوفاق</p>
+      </div>
+
+      <div class="card">
+        <h3>موقف البلاد العربية من الجهاد المقدس</h3>
+        <p>في البداية أثارت دعوة الجهاد حماساً، لكن سرعان ما ساد الحذر بين زعماء العرب بسبب:</p>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">📌 الأسباب</div>
+          <ul>
+            <li>اتقراع الأزمات بين الأتراك والعرب</li>
+            <li>فشل المؤتمر العربي الأول بباريس والتسوية التركية التي أعقبته</li>
+          </ul>
+        </div>
+        <div class="hbox hbox-blue">
+          <div class="hbox-label">💡 النتيجة</div>
+          <p>نما تيار فكري يدعو إلى التريث في التأييد الفعلي، والاتصال بكافة الأطراف المعنية لمعرفة موقفها من المطالب العربية</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>موقف إنجلترا من إعلان الجهاد</h3>
+        <p>تزعجت إنجلترا من فكرة الجهاد المقدس بسبب صداه القوي بين المسلمين، إذ كانت إنجلترا تحكم الهند وجنوب شرق آسيا التي بها <strong>حوالي 50 مليون مسلم</strong> على الأقل</p>
+      </div>
+    </div>
+
+    <!-- ════════════════ REVOLT ════════════════ -->
+    <div class="page" id="page-revolt">
+      <div class="page-title">
+        <div class="pt-icon red">🔥</div>
+        <div class="pt-text">
+          <h2>الثورة العربية 1916م</h2>
+          <p>المقدمات — المراسلات — الأسباب — النتائج</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>📜 مقدمات الثورة</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>مقدمات الثورة العربية</h3>
+        <ul>
+          <li>عمل <strong>الشريف حسين بن علي</strong> على بناء دولة عربية كبرى منذ أن أسندت إليه شرافة مكة عام <span class="chip chip-gold">1908م</span></li>
+          <li>حاول الأتراك إقصاءه فأرسل ابنه الأمير عبدالله لمقابلة السير رونالد ستورز</li>
+          <li>بعد الحرب نشطت قنوات الاتصال بين شرافة مكة والمندوب السامي البريطاني في القاهرة</li>
+        </ul>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>✉️ مراسلات الحسين-مكماهون 1915-1916م</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>مراسلات الحسين / مكماهون</h3>
+        <p>مراسلات بين <strong>الشريف حسين</strong> وهنري مكماهون المندوب السامي البريطاني في القاهرة. تمثلت مطالب الشريف في:</p>
+        <div class="hbox hbox-gold">
+          <div class="hbox-label">🎯 المطالب</div>
+          <ul>
+            <li>أن يتولى <strong>الخلافة الإسلامية</strong> بدلاً من السلطان العثماني</li>
+            <li><strong>استقلال البلاد العربية</strong> كلها: العراق + سوريا + شبه الجزيرة العربية</li>
+          </ul>
+        </div>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">❌ موقف بريطانيا</div>
+          <p>رفضت بريطانيا المطالب بحجة وجود اتفاقيات مع مشيخات أخرى، مثل: <strong>اتفاقية دارين 1915م</strong> مع عبدالعزيز بن سعود</p>
+          <p>لم يبقَ سوى <strong>الحجاز</strong> (على اعتبار أن اليمن مستقلة) لتكون تحت سيادة الشريف حسين</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>⚡ أسباب الثورة</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>أسباب إعلان الثورة</h3>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">📌 الأسباب الرئيسية</div>
+          <ul>
+            <li>رغبة الشريف في تكوين دولة عربية كبرى وتولي الخلافة</li>
+            <li>تخوفه من إقصائه بسبب مماطلته في الانضمام للأتراك</li>
+            <li>إصدار جمال باشا أحكام إعدام جماعية بحق زعماء الحركة العربية في سوريا</li>
+          </ul>
+        </div>
+        <p>أعلن الشريف حسين الثورة في <span class="chip chip-gold">يونيو 1916م</span> دون الحصول على اعتراف صريح من إنجلترا بحق العرب في الاستقلال</p>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>✅ نتائج الثورة</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>نتائج الثورة العربية</h3>
+        <table class="comp-table">
+          <tr>
+            <th>الجهة</th>
+            <th>الإنجاز</th>
+          </tr>
+          <tr>
+            <td>قوات الشريف حسين</td>
+            <td>تصفية الوجود العسكري التركي في الحجاز — الاستيلاء على العقبة</td>
+          </tr>
+          <tr>
+            <td>الفيلق العربي (فيصل)</td>
+            <td>دخول دمشق ثم حمص وحلب</td>
+          </tr>
+          <tr>
+            <td>القوات البريطانية</td>
+            <td>طرد العثمانيين من العراق والاستيلاء على بغداد</td>
+          </tr>
+          <tr>
+            <td>هدنة مدروس</td>
+            <td><span class="chip chip-gold">نوفمبر 1918م</span> — إنهاء الحرب الرسمي</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════════════ SYKES ════════════════ -->
+    <div class="page" id="page-sykes">
+      <div class="page-title">
+        <div class="pt-icon blue">🗺️</div>
+        <div class="pt-text">
+          <h2>اتفاقية سايكس-بيكو</h2>
+          <p>1916م — تقسيم الهلال الخصيب</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>نشأة الاتفاقية</h3>
+        <p>كشفت <strong>روسيا البلشفية</strong> مؤامرة واسعة النطاق — اتفاقية ثلاثية سرية بين <strong>روسيا القيصرية وإنجلترا وفرنسا</strong> لاقتسام أملاك الدولة العثمانية، عرفت بـ "اتفاقية سايكس-بيكو"</p>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>📋 نصوص الاتفاقية</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>اقتسام الهلال الخصيب (سوريا والعراق)</h3>
+
+        <div class="hbox hbox-red">
+          <div class="hbox-label">🇫🇷 حصة فرنسا</div>
+          <ul>
+            <li>جنوب الأناضول والإسكندرية</li>
+            <li>الساحل السوري: غرب حلب وحمص ودمشق</li>
+            <li>شمال العراق بما فيه <strong>الموصل</strong></li>
+          </ul>
+        </div>
+
+        <div class="hbox hbox-blue">
+          <div class="hbox-label">🇬🇧 حصة إنجلترا</div>
+          <ul>
+            <li>العراق: ولاية البصرة وبغداد</li>
+            <li>حيفا وعكا</li>
+            <li>أجزاء من جنوب بلاد الشام حتى سيناء</li>
+          </ul>
+        </div>
+
+        <div class="hbox hbox-gold">
+          <div class="hbox-label">🌍 فلسطين</div>
+          <p>إقامة نظام <strong>دولي</strong> فيها</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>نتائج سايكس-بيكو</h3>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">⚠️ التداعيات</div>
+          <ul>
+            <li>منع الأمير فيصل والقوات العربية من دخول بيروت</li>
+            <li>إنزال العلم العربي المرفوع وإحلال العلم الفرنسي</li>
+            <li>فشل الشريف حسين في مؤتمر الصلح بباريس <span class="chip chip-gold">1919م</span></li>
+            <li>تقسيم المنطقة العربية بين الانتداب البريطاني والفرنسي</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ SANREMO ════════════════ -->
+    <div class="page" id="page-sanremo">
+      <div class="page-title">
+        <div class="pt-icon teal">🏛️</div>
+        <div class="pt-text">
+          <h2>مؤتمر سان ريمو 1920م</h2>
+          <p>تعديل سايكس-بيكو وتحديد الانتداب</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>ما هو مؤتمر سان ريمو؟</h3>
+        <p>تم عقده بين دول الحلفاء لإعادة النظر في اتفاقية <strong>سايكس-بيكو</strong>، وقُرر فيه توزيع الانتداب على البلاد العربية</p>
+      </div>
+
+      <div class="card">
+        <h3>قرارات المؤتمر</h3>
+        <table class="comp-table">
+          <tr>
+            <th>المنطقة</th>
+            <th>الدولة المنتدِبة</th>
+          </tr>
+          <tr>
+            <td>🇮🇶 العراق كله + 🇵🇸 فلسطين</td>
+            <td><span class="chip chip-blue">🇬🇧 الانتداب الإنجليزي</span></td>
+          </tr>
+          <tr>
+            <td>🇸🇾 سوريا + 🇱🇧 لبنان</td>
+            <td><span class="chip chip-red">🇫🇷 الانتداب الفرنسي</span></td>
+          </tr>
+        </table>
+
+        <div class="hbox hbox-gold">
+          <div class="hbox-label">📌 ملاحظة مهمة</div>
+          <p>مؤتمر سان ريمو هو التطبيق الفعلي لاتفاقية سايكس-بيكو وإضفاء الشرعية الدولية على تقسيم المنطقة العربية</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ SYRIA ════════════════ -->
+    <div class="page" id="page-syria">
+      <div class="page-title">
+        <div class="pt-icon red">🇸🇾</div>
+        <div class="pt-text">
+          <h2>سوريا ولبنان</h2>
+          <p>من الانتداب إلى الاستقلال</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>الثورة السورية الكبرى 1925م</h3>
+        <p>بعد إعلان فرنسا الانتداب تطبيقاً لقرارات سان ريمو، اتخذت سياسة استعمارية أدت إلى قيام الثورة</p>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>⚡ أسباب الثورة</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>أسباب الثورة السورية</h3>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">📌 الأسباب</div>
+          <ul>
+            <li>اقتطاع سهل البقاع وطرابلس وصيدا وبيروت وضمها لجبل لبنان لإظهار <strong>لبنان الكبير</strong></li>
+            <li>تمزيق سوريا إلى دويلات: <strong>حلب — الدروز — العلويين — دمشق</strong></li>
+            <li>ربط العملة السورية واللبنانية بالفرنك الفرنسي للسيطرة على الاقتصاد</li>
+            <li>شغل الموظفين الفرنسيين معظم المناصب الرئيسية</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="sh-line"></div>
+        <span>🕊️ نتائج الثورة</span>
+        <div class="sh-line"></div>
+      </div>
+
+      <div class="card">
+        <h3>أحداث الثورة ونتائجها</h3>
+        <p><strong>انطلقت</strong> من جبل الدروز بقيادة <strong>سلطان باشا الأطرش</strong>، فقامت فرنسا بالسيطرة عليها بقواتها المسلحة</p>
+        <div class="hbox hbox-green">
+          <div class="hbox-label">✅ النتائج</div>
+          <p>تعديل السلطة الفرنسية لسياساتها واتفاق الطرفين على جمعية تأسيسية أعلنت <strong>الجمهورية السورية</strong></p>
+        </div>
+        <div class="hbox hbox-red">
+          <div class="hbox-label">❌ الخلاف السوري-الفرنسي</div>
+          <ul>
+            <li><strong>الموقف السوري:</strong> دولة مستقلة دستورية برلمانية</li>
+            <li><strong>الموقف الفرنسي:</strong> يد عليا فرنسية دائمة في توجيه البلاد</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ SAUDI ════════════════ -->
+    <div class="page" id="page-saudi">
+      <div class="page-title">
+        <div class="pt-icon gold">🏴</div>
+        <div class="pt-text">
+          <h2>دخول الحجاز وتوسع آل سعود</h2>
+          <p>في الجزيرة العربية</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>الموقف قبل التوسع</h3>
+        <p>نجحت قوات الشريف حسين في إسقاط الحكم العثماني في سوريا، لكن <strong>عبدالعزيز آل سعود</strong> كان يتجه للتوسع حيث قام بـ:</p>
+        <div class="hbox hbox-gold">
+          <div class="hbox-label">📋 خطوات التوسع</div>
+          <ul>
+            <li>الضغط العسكري على الشريف حسين — أول صدام عند <strong>تربة 1919م</strong></li>
+            <li>ضم <strong>حائل 1921م</strong> بعد ضرب آل الرشيد ضربة نهائية</li>
+            <li>الاستيلاء على <strong>الطائف 1924م</strong></li>
+            <li>الاستيلاء على <strong>مكن الحجاز</strong> وسلطان نجد في يناير <span class="chip chip-gold">1926م</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>الحرب مع اليمن</h3>
+        <p>كانت عسير تحت حكم الإدراسة وتطلع عبدالعزيز لضمها لحكمه، فنشب نزاع مع <strong>يحيى حميد الدين إمام اليمن</strong></p>
+        <div class="hbox hbox-green">
+          <div class="hbox-label">✅ النتيجة</div>
+          <p>انتهت الحرب بانتصار عبدالعزيز وعُقدت <strong>معاهدة الطائف 1934م</strong> بين السعودية واليمن، وأصبحت عسير جزءاً من المملكة العربية السعودية</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ FLASHCARDS ════════════════ -->
+    <div class="page" id="page-flash">
+      <div class="page-title">
+        <div class="pt-icon gold">🃏</div>
+        <div class="pt-text">
+          <h2>فلاش كاردز</h2>
+          <p>راجع المصطلحات والمفاهيم الأساسية</p>
+        </div>
+      </div>
+
+      <div class="fc-progress">
+        <div class="fc-progress-bar"><div class="fc-progress-fill" id="fcFill" style="width:4%"></div></div>
+        <div class="fc-counter" id="fcCounter">1 / 25</div>
+      </div>
+
+      <div class="fc-hint"><span>👆</span> اضغط على البطاقة لظهور الإجابة</div>
+
+      <div class="fc-wrap" onclick="flipCard()">
+        <div class="fc" id="fc">
+          <div class="fc-front">
+            <span class="fc-q-label">❓ السؤال</span>
+            <p id="fcQ">جاري التحميل...</p>
+          </div>
+          <div class="fc-back">
+            <span class="fc-a-label">✅ الإجابة</span>
+            <p id="fcA"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-nav">
+        <button class="fc-btn" onclick="prevCard()">→ السابقة</button>
+        <button class="fc-btn primary" onclick="flipCard()">🔄 اقلب</button>
+        <button class="fc-btn" onclick="nextCard()">← التالية</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="watermark">A7MD_EDITOR</div>
+
+<script>
+const navMap = {home:0,war:1,revolt:2,sykes:3,sanremo:4,syria:5,saudi:6,flash:7};
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-btn')[navMap[id]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (id === 'flash') renderCard();
+}
+
+// ─── Flashcards ───
+const cards = [
+  {q:"الجهاد المقدس",a:"إعلان الدولة العثمانية الحرب ضد دول الوفاق في نوفمبر 1914م"},
+  {q:"مراسلات الحسين-مكماهون",a:"مراسلات 1915–1916م بين الشريف حسين وهنري مكماهون تمثلت في المطالبة باستقلال العرب والخلافة"},
+  {q:"اتفاقية سايكس-بيكو 1916م",a:"اتفاقية سرية ثلاثية بين روسيا وإنجلترا وفرنسا لاقتسام أملاك الدولة العثمانية"},
+  {q:"مؤتمر سان ريمو 1920م",a:"مؤتمر قرر فيه: العراق وفلسطين للإنجليز / سوريا ولبنان للفرنسيين"},
+  {q:"الثورة العربية 1916م",a:"أعلنها الشريف حسين في يونيو 1916م لتحرير البلاد العربية من الحكم العثماني"},
+  {q:"هدنة مدروس",a:"هدنة نوفمبر 1918م أنهت القتال بين الدولة العثمانية ودول الوفاق"},
+  {q:"الثورة السورية الكبرى 1925م",a:"ثورة انطلقت من جبل الدروز بقيادة سلطان باشا الأطرش ضد الانتداب الفرنسي"},
+  {q:"لبنان الكبير",a:"نتيجة ضم فرنسا سهل البقاع وطرابلس وصيدا وبيروت إلى جبل لبنان"},
+  {q:"سلطان باشا الأطرش",a:"قائد الثورة السورية الكبرى 1925م انطلاقاً من جبل الدروز"},
+  {q:"اتفاقية دارين 1915م",a:"اتفاقية بريطانية مع عبدالعزيز بن سعود — من أسباب رفض مطالب الشريف حسين"},
+  {q:"هنري مكماهون",a:"المندوب السامي البريطاني في القاهرة الذي تراسل مع الشريف حسين"},
+  {q:"معاهدة الطائف 1934م",a:"معاهدة بين السعودية واليمن جعلت عسير جزءاً من المملكة العربية السعودية"},
+  {q:"الفيلق العربي",a:"القوات العربية بقيادة الأمير فيصل التي دخلت دمشق ثم حمص وحلب"},
+  {q:"العقبة",a:"ميناء استولى عليه الثوار العرب خلال الثورة العربية 1916م"},
+  {q:"الجمهورية السورية",a:"النتيجة النهائية للثورة السورية 1925م بعد قيام جمعية تأسيسية"},
+  {q:"ضم حائل 1921م",a:"قيام عبدالعزيز آل سعود بضرب آل الرشيد ضربة نهائية وضم حائل"},
+  {q:"تربة 1919م",a:"أول صدام عسكري بين آل سعود والشريف حسين انتهى بهزيمة قوات الشريف"},
+  {q:"50 مليون مسلم",a:"عدد المسلمين في الهند وجنوب شرق آسيا — سبب قلق بريطانيا من دعوة الجهاد"},
+  {q:"روسيا البلشفية",a:"من كشفت نصوص اتفاقية سايكس-بيكو السرية للرأي العام عام 1917م"},
+  {q:"الانتداب الفرنسي على سوريا ولبنان",a:"قرار مؤتمر سان ريمو 1920م بوضع سوريا ولبنان تحت الإدارة الفرنسية"},
+  {q:"الانتداب البريطاني على العراق وفلسطين",a:"قرار مؤتمر سان ريمو 1920م بوضع العراق وفلسطين تحت الإدارة البريطانية"},
+  {q:"جمال باشا",a:"القائد العثماني الذي أصدر أحكام إعدام جماعية بحق زعماء الحركة العربية في سوريا"},
+  {q:"ملك الحجاز وسلطان نجد",a:"اللقب الذي أطلقه عبدالعزيز آل سعود على نفسه في يناير 1926م"},
+  {q:"الفرنك الفرنسي",a:"العملة التي ربطت فرنسا بها الاقتصاد السوري واللبناني للسيطرة عليهما"},
+  {q:"نوفمبر 1914م",a:"تاريخ إعلان الدولة العثمانية الجهاد المقدس ضد دول الوفاق"},
+];
+
+let curCard = 0;
+
+function renderCard() {
+  const c = cards[curCard];
+  document.getElementById('fcQ').textContent = c.q;
+  document.getElementById('fcA').textContent = c.a;
+  document.getElementById('fc').classList.remove('flipped');
+  const pct = Math.round(((curCard + 1) / cards.length) * 100);
+  document.getElementById('fcFill').style.width = pct + '%';
+  document.getElementById('fcCounter').textContent = (curCard + 1) + ' / ' + cards.length;
+}
+
+function flipCard() {
+  document.getElementById('fc').classList.toggle('flipped');
+}
+
+function nextCard() {
+  curCard = (curCard + 1) % cards.length;
+  renderCard();
+}
+
+function prevCard() {
+  curCard = (curCard - 1 + cards.length) % cards.length;
+  renderCard();
+}
+
+// Init
+renderCard();
+</script>
+</body>
+</html>
